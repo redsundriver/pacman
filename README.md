@@ -56,3 +56,10 @@ docker push <registry>/<user>/pacman-nodejs-app
 ```
 s2i build . centos/nodejs-6-centos7 pacman
 ```
+
+## Running mongodb
+
+```
+docker run -p 27017:27017 --name mongo mongo:4.4.28
+
+```

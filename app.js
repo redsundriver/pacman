@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var Database = require('./lib/database');
 var assert = require('assert');
+var os = require('os');
 
 // Constants
 
@@ -21,7 +22,11 @@ app.set('view engine', 'jade');
 
 // Handle root web server's public directory
 app.use('/', express.static(path.join(__dirname, 'public')));
-
+app.use('/node',(req,res)=>{
+    res.json({
+        server_name: os.hostname()
+    });
+})
 app.use('/highscores', highscores);
 app.use('/user', user);
 app.use('/location', loc);
